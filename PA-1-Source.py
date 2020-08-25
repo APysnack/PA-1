@@ -134,6 +134,11 @@ def euclid_modified_gcd(a, b):
     if f is 0 or f is 1:
         return f
 
+    if b > a:
+        temp = a
+        a = b
+        b = temp
+
     r = None
 
     while r is not 0:
@@ -147,8 +152,8 @@ def euclid_modified_gcd(a, b):
         a = b
         b = r
 
-    print(a)
+    return a
 
 
 if __name__ == '__main__':
-    euclid_modified_gcd(114, 90)
+    euclid_modified_gcd(0, 290)
