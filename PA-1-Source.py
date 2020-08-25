@@ -19,18 +19,14 @@ import csv
 
 # generates random numbers and stores them in a dictionary
 def generate_nums():
-    num_dict = {}
+    list_range = 100
+    list_elements = 10
 
-    # range is the number of trials being conducted
-    for i in range(10):
-        # generates random numbers between randint(min_num, max_num)
-        a = random.randint(1, 100)
-        b = random.randint(1, 100)
+    a_list = random.sample(range(list_range), list_elements)
+    b_list = random.sample(range(list_range), list_elements)
+    count = len(a_list)
 
-        # adds the randomly generated numbers to the dictionary
-        num_dict.update({a: b})
-
-    return num_dict
+    return a_list, b_list, count
 
 
 # preprocessing to ensure a and b are positive and handles for the case where a or b == 0 or 1
@@ -259,66 +255,166 @@ def euclid_modified_gcd(a, b):
 
 
 # runs the dictionary through each version of the gcd algorithms
-def run_algorithms(num_dict):
-    run_bf_v1(num_dict)
-    run_bf_v2(num_dict)
-    run_euclid_gcd(num_dict)
-    run_euclid_modified(num_dict)
+def run_algorithms(a_list, b_list, count):
+    run_bf_v1(a_list, b_list, count)
+    run_bf_v2(a_list, b_list, count)
+    run_euclid_gcd(a_list, b_list, count)
+    run_euclid_modified(a_list, b_list, count)
 
 
-# runs the dictionary of numbers through brute force algorithm 1
-def run_bf_v1(num_dict):
+def write_stats(min, max, avg, median, fname):
+    print('Write these to ' + fname + ':')
+    print(min, max, avg, median)
+
+
+# runs the dictionary of numbers through brute force algorithm 1 and writes to csv files
+def run_bf_v1(a_list, b_list, count):
     file_name = 'BF_v1_Results.csv'
+    stat_file_name = 'BF_v1_Statistics.csv'
+    max_time, total_time = 0, 0
+    occurrence_dict = {}
+
+    # an upper bound of min_time
+    min_time = 300000
 
     with open(file_name, 'w', newline='') as f:
         writer = csv.writer(f)
         writer.writerow(['Number One', 'Number Two', 'Their GCD', 'Time Spent (nanoseconds)'])
 
-        for item in num_dict:
-            gcd, run_time = bf_v1(item, num_dict[item])
-            writer.writerow([item, num_dict[item], gcd, run_time])
+        for i in range(count):
+            gcd, run_time = bf_v1(a_list[i], b_list[i])
+            writer.writerow([a_list[i], b_list[i], gcd, run_time])
+
+            if run_time > max_time:
+                max_time = run_time
+
+            if run_time < min_time:
+                min_time = run_time
+
+            total_time += run_time
+
+            if not occurrence_dict.get(run_time):
+                occurrence_dict.update({run_time: 0})
+
+            occurrence_dict[run_time] += 1
+
+    median = max(occurrence_dict, key=occurrence_dict.get)
+    avg_time = (total_time / count)
+    write_stats(min_time, max_time, avg_time, median, stat_file_name)
 
 
-# runs the dictionary of numbers through brute force algorithm 2
-def run_bf_v2(num_dict):
+# runs the dictionary of numbers through brute force algorithm 2 and writes to csv files
+def run_bf_v2(a_list, b_list, count):
     file_name = 'BF_v2_Results.csv'
+    stat_file_name = 'BF_v2_Statistics.csv'
+    max_time, total_time = 0, 0
+    occurrence_dict = {}
+
+    # an upper bound of min_time
+    min_time = 300000
 
     with open(file_name, 'w', newline='') as f:
         writer = csv.writer(f)
         writer.writerow(['Number One', 'Number Two', 'Their GCD', 'Time Spent (nanoseconds)'])
 
-        for item in num_dict:
-            gcd, run_time = bf_v2(item, num_dict[item])
-            writer.writerow([item, num_dict[item], gcd, run_time])
+        for i in range(count):
+            gcd, run_time = bf_v2(a_list[i], b_list[i])
+            writer.writerow([a_list[i], b_list[i], gcd, run_time])
+
+            if run_time > max_time:
+                max_time = run_time
+
+            if run_time < min_time:
+                min_time = run_time
+
+            total_time += run_time
+
+            if not occurrence_dict.get(run_time):
+                occurrence_dict.update({run_time: 0})
+
+            occurrence_dict[run_time] += 1
+
+    median = max(occurrence_dict, key=occurrence_dict.get)
+    avg_time = (total_time / count)
+    write_stats(min_time, max_time, avg_time, median, stat_file_name)
 
 
-# runs the dictionary of numbers through original euclidean algorithm
-def run_euclid_gcd(num_dict):
+# runs the dictionary of numbers through original euclidean algorithm and writes to csv files
+def run_euclid_gcd(a_list, b_list, count):
     file_name = 'OE_Results.csv'
+    stat_file_name = 'OE_Statistics.csv'
+
+    max_time, total_time = 0, 0
+    occurrence_dict = {}
+
+    # an upper bound of min_time
+    min_time = 300000
 
     with open(file_name, 'w', newline='') as f:
         writer = csv.writer(f)
         writer.writerow(['Number One', 'Number Two', 'Their GCD', 'Time Spent (nanoseconds)'])
 
-        for item in num_dict:
-            gcd, run_time = euclid_gcd(item, num_dict[item])
-            writer.writerow([item, num_dict[item], gcd, run_time])
+        for i in range(count):
+            gcd, run_time = euclid_gcd(a_list[i], b_list[i])
+            writer.writerow([a_list[i], b_list[i], gcd, run_time])
+
+            if run_time > max_time:
+                max_time = run_time
+
+            if run_time < min_time:
+                min_time = run_time
+
+            total_time += run_time
+
+            if not occurrence_dict.get(run_time):
+                occurrence_dict.update({run_time: 0})
+
+            occurrence_dict[run_time] += 1
+
+    median = max(occurrence_dict, key=occurrence_dict.get)
+    avg_time = (total_time / count)
+
+    write_stats(min_time, max_time, avg_time, median, stat_file_name)
 
 
-# runs the dictionary of numbers through modified euclidean algorithm
-def run_euclid_modified(num_dict):
+# runs the dictionary of numbers through modified euclidean algorithm and writes to csv files
+def run_euclid_modified(a_list, b_list, count):
     file_name = 'SE_Results.csv'
+    stat_file_name = 'SE_Statistics.csv'
+    max_time, total_time = 0, 0
+    occurrence_dict = {}
+
+    # an upper bound of min_time
+    min_time = 300000
 
     with open(file_name, 'w', newline='') as f:
         writer = csv.writer(f)
         writer.writerow(['Number One', 'Number Two', 'Their GCD', 'Time Spent (nanoseconds)'])
 
-        for item in num_dict:
-            gcd, run_time = euclid_modified_gcd(item, num_dict[item])
-            writer.writerow([item, num_dict[item], gcd, run_time])
+        for i in range(count):
+            gcd, run_time = euclid_modified_gcd(a_list[i], b_list[i])
+            writer.writerow([a_list[i], b_list[i], gcd, run_time])
+
+            if run_time > max_time:
+                max_time = run_time
+
+            if run_time < min_time:
+                min_time = run_time
+
+            total_time += run_time
+
+            if not occurrence_dict.get(run_time):
+                occurrence_dict.update({run_time: 0})
+
+            occurrence_dict[run_time] += 1
+
+    median = max(occurrence_dict, key=occurrence_dict.get)
+    avg_time = (total_time / count)
+    write_stats(min_time, max_time, avg_time, median, stat_file_name)
 
 
 # main function
 if __name__ == '__main__':
-    num_dict = generate_nums()
-    run_algorithms(num_dict)
+    a_list, b_list, count = generate_nums()
+    run_algorithms(a_list, b_list, count)
+
