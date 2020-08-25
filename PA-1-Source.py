@@ -18,7 +18,7 @@ import random
 def generate_nums():
     num_dict = {}
 
-    for i in range(5):
+    for i in range(10):
         a = random.randint(1, 1000)
         b = random.randint(1, 1000)
         num_dict.update({a: b})
@@ -221,19 +221,23 @@ def euclid_modified_gcd(a, b):
 
 
 def run_algorithms(num_dict):
-    for item in num_dict:
-        a = item
-        b = num_dict[item]
-        print(a, b)
-        print(bf_gcd_down(a, b))
-        print(bf_gcd_up(a, b))
-        print(euclid_gcd(a, b))
-        print(euclid_modified_gcd(a, b))
 
+    # iterates through dictionary of randomized values
+    for item in num_dict:
+        # a is the number stored in the dicts key
+        a = item
+
+        # b is the number stored in the dicts value
+        b = num_dict[item]
+
+        # calls the 4 different euclidean algorithms using a and b as arguments
+        result_1 = bf_gcd_down(a, b)
+        result_2 = bf_gcd_up(a, b)
+        result_3 = euclid_gcd(a, b)
+        result_4 = euclid_modified_gcd(a, b)
 
 if __name__ == '__main__':
-    # num_dict = generate_nums()
-    # run_algorithms(num_dict)
-    print(bf_gcd_down(42, 876))
+    num_dict = generate_nums()
+    run_algorithms(num_dict)
 
 
