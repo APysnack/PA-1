@@ -11,6 +11,19 @@ Nguyen, Brandon
 Pysnack, Alan
 '''
 import math
+import random
+
+
+# generates random numbers and stores them in a dictionary
+def generate_nums():
+    num_dict = {}
+
+    for i in range(5):
+        a = random.randint(1, 1000)
+        b = random.randint(1, 1000)
+        num_dict.update({a: b})
+
+    return num_dict
 
 
 # ensures a and b are positive and handles for the case where a or b == 0 or 1
@@ -63,7 +76,7 @@ def bf_gcd_down(a, b):
         if (big_num % small_num) is 0:
 
             # adds to the list of big_num's factors
-            big_list.append(int((big_num / small_num)))
+            big_list.append(int(small_num))
 
         # decrements count
         small_num -= 1
@@ -77,7 +90,7 @@ def bf_gcd_down(a, b):
         if (small_num % length) is 0:
 
             # adds to the list of small_num's factors
-            small_list.append(int((small_num / length)))
+            small_list.append(int(length))
         length -= 1
 
     gcd = None
@@ -88,6 +101,7 @@ def bf_gcd_down(a, b):
         # if that number is found in the list of small_num's factors, updates gcd with new value
         if item in small_list:
             gcd = item
+            return gcd
 
     if gcd is None:
         gcd = 1
@@ -206,5 +220,20 @@ def euclid_modified_gcd(a, b):
     return a
 
 
+def run_algorithms(num_dict):
+    for item in num_dict:
+        a = item
+        b = num_dict[item]
+        print(a, b)
+        print(bf_gcd_down(a, b))
+        print(bf_gcd_up(a, b))
+        print(euclid_gcd(a, b))
+        print(euclid_modified_gcd(a, b))
+
+
 if __name__ == '__main__':
-    pass
+    # num_dict = generate_nums()
+    # run_algorithms(num_dict)
+    print(bf_gcd_down(42, 876))
+
+
