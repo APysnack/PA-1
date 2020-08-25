@@ -10,6 +10,7 @@ Ibrahim, Mohammed
 Nguyen, Brandon
 Pysnack, Alan
 '''
+
 import math
 import random
 import time
@@ -22,8 +23,8 @@ def generate_nums():
     # range is the number of trials being conducted
     for i in range(1):
         # generates random numbers between randint(min_num, max_num)
-        a = random.randint(1, 999999)
-        b = random.randint(1, 999999)
+        a = random.randint(1, 100)
+        b = random.randint(1, 100)
 
         # adds the randomly generated numbers to the dictionary
         num_dict.update({a: b})
@@ -256,26 +257,44 @@ def euclid_modified_gcd(a, b):
     return a, end_time
 
 
+# runs the dictionary through each version of the gcd algorithms
 def run_algorithms(num_dict):
+    run_bf_v1(num_dict)
+    run_bf_v2(num_dict)
+    run_euclid_gcd(num_dict)
+    run_euclid_modified(num_dict)
 
-    # iterates through dictionary of randomized values
+
+# runs the dictionary of numbers through brute force algorithm 1
+def run_bf_v1(num_dict):
     for item in num_dict:
-        # a is the number stored in the dicts key
-        a = item
+        gcd, run_time = bf_v1(item, num_dict[item])
+        print(item, num_dict[item])
+        print(gcd, run_time)
 
-        # b is the number stored in the dicts value
-        b = num_dict[item]
 
-        # calls the 4 different euclidean algorithms using a and b as arguments
-        gcd_1, time_1 = bf_v1(a, b)
-        gcd_2, time_2 = bf_v2(a, b)
-        gcd_3, time_3 = euclid_gcd(a, b)
-        gcd_4, time_4 = euclid_modified_gcd(a, b)
-        print(gcd_1, time_1)
-        print(gcd_2, time_2)
-        print(gcd_3, time_3)
-        print(gcd_4, time_4)
+# runs the dictionary of numbers through brute force algorithm 2
+def run_bf_v2(num_dict):
+    for item in num_dict:
+        gcd, run_time = bf_v2(item, num_dict[item])
+        print(item, num_dict[item])
+        print(gcd, run_time)
 
+
+# runs the dictionary of numbers through original euclidean algorithm
+def run_euclid_gcd(num_dict):
+    for item in num_dict:
+        gcd, run_time = euclid_gcd(item, num_dict[item])
+        print(item, num_dict[item])
+        print(gcd, run_time)
+
+
+# runs the dictionary of numbers through modified euclidean algorithm
+def run_euclid_modified(num_dict):
+    for item in num_dict:
+        gcd, run_time = euclid_modified_gcd(item, num_dict[item])
+        print(item, num_dict[item])
+        print(gcd, run_time)
 
 if __name__ == '__main__':
     num_dict = generate_nums()
