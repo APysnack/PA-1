@@ -125,9 +125,30 @@ def euclid_gcd(a, b):
 
 
 # the modified version of euclid's algorithm using subtraction
-def euclid_modified_gcd():
-    pass
+def euclid_modified_gcd(a, b):
+    # pre-processing to ensure numbers are positive.
+    # f is a flag that returns 0 if a or b is 0, and returns 1 if a or b is 1
+    a, b, f = preprocess(a, b)
+
+    # returns 0 or 1 if either of those numbers are detected in inputs
+    if f is 0 or f is 1:
+        return f
+
+    r = None
+
+    while r is not 0:
+        r = a - b
+        if r > b:
+            r = r - b
+            if r > b:
+                r = r - b
+                if r > b:
+                    r = a - b * math.floor((a/b))
+        a = b
+        b = r
+
+    print(a)
 
 
 if __name__ == '__main__':
-    print(bf_gcd_up(114, 90))
+    euclid_modified_gcd(114, 90)
