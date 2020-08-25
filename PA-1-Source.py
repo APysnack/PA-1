@@ -14,6 +14,7 @@ Pysnack, Alan
 import math
 import random
 import time
+import csv
 
 
 # generates random numbers and stores them in a dictionary
@@ -21,7 +22,7 @@ def generate_nums():
     num_dict = {}
 
     # range is the number of trials being conducted
-    for i in range(1):
+    for i in range(10):
         # generates random numbers between randint(min_num, max_num)
         a = random.randint(1, 100)
         b = random.randint(1, 100)
@@ -267,42 +268,57 @@ def run_algorithms(num_dict):
 
 # runs the dictionary of numbers through brute force algorithm 1
 def run_bf_v1(num_dict):
-    print('Brute Force Algorithm 1. Values are A, B, GCD, Time (Nanoseconds)')
-    for item in num_dict:
-        gcd, run_time = bf_v1(item, num_dict[item])
-        print(item, num_dict[item])
-        print(gcd, run_time)
+    file_name = 'BF_v1_Results.csv'
+
+    with open(file_name, 'w', newline='') as f:
+        writer = csv.writer(f)
+        writer.writerow(['Number One', 'Number Two', 'Their GCD', 'Time Spent (nanoseconds)'])
+
+        for item in num_dict:
+            gcd, run_time = bf_v1(item, num_dict[item])
+            writer.writerow([item, num_dict[item], gcd, run_time])
 
 
 # runs the dictionary of numbers through brute force algorithm 2
 def run_bf_v2(num_dict):
-    print('Brute Force Algorithm 2. Values are A, B, GCD, Time (Nanoseconds)')
-    for item in num_dict:
-        gcd, run_time = bf_v2(item, num_dict[item])
-        print(item, num_dict[item])
-        print(gcd, run_time)
+    file_name = 'BF_v2_Results.csv'
+
+    with open(file_name, 'w', newline='') as f:
+        writer = csv.writer(f)
+        writer.writerow(['Number One', 'Number Two', 'Their GCD', 'Time Spent (nanoseconds)'])
+
+        for item in num_dict:
+            gcd, run_time = bf_v2(item, num_dict[item])
+            writer.writerow([item, num_dict[item], gcd, run_time])
 
 
 # runs the dictionary of numbers through original euclidean algorithm
 def run_euclid_gcd(num_dict):
-    print('Euclids Algorithm Original. Values are A, B, GCD, Time (Nanoseconds)')
-    for item in num_dict:
-        gcd, run_time = euclid_gcd(item, num_dict[item])
-        print(item, num_dict[item])
-        print(gcd, run_time)
+    file_name = 'OE_Results.csv'
+
+    with open(file_name, 'w', newline='') as f:
+        writer = csv.writer(f)
+        writer.writerow(['Number One', 'Number Two', 'Their GCD', 'Time Spent (nanoseconds)'])
+
+        for item in num_dict:
+            gcd, run_time = euclid_gcd(item, num_dict[item])
+            writer.writerow([item, num_dict[item], gcd, run_time])
 
 
 # runs the dictionary of numbers through modified euclidean algorithm
 def run_euclid_modified(num_dict):
-    print('Euclids Algorithm Modified. Values are A, B, GCD, Time (Nanoseconds)')
-    for item in num_dict:
-        gcd, run_time = euclid_modified_gcd(item, num_dict[item])
-        print(item, num_dict[item])
-        print(gcd, run_time)
+    file_name = 'SE_Results.csv'
 
+    with open(file_name, 'w', newline='') as f:
+        writer = csv.writer(f)
+        writer.writerow(['Number One', 'Number Two', 'Their GCD', 'Time Spent (nanoseconds)'])
+
+        for item in num_dict:
+            gcd, run_time = euclid_modified_gcd(item, num_dict[item])
+            writer.writerow([item, num_dict[item], gcd, run_time])
+
+
+# main function
 if __name__ == '__main__':
     num_dict = generate_nums()
     run_algorithms(num_dict)
-
-
-
