@@ -104,6 +104,11 @@ def bf_gcd_up(a, b):
     if f is 0 or f is 1:
         return f
 
+    # if the numbers a and b are the same, returns a as gcd
+    if a is b:
+        return a
+
+    # detects which number is larger/smaller
     if a > b:
         big_num = a
         small_num = b
@@ -111,10 +116,13 @@ def bf_gcd_up(a, b):
         big_num = b
         small_num = a
 
-    length = small_num
+    # loop: when it finds a factor for big_num, it checks to see if it's also a factor for small_num
+    for i in range(small_num):
 
-    for i in range(length):
+        # if (i+1) is a factor for big_num
         if big_num % (i+1) is 0:
+
+            # if (i+1) is a factor for small_num
             if small_num % (i+1) is 0:
                 gcd = (i + 1)
 
@@ -130,6 +138,10 @@ def euclid_gcd(a, b):
     # returns 0 or 1 if either of those numbers are detected in inputs
     if f is 0 or f is 1:
         return f
+
+    # if the numbers a and b are the same, returns a as gcd
+    if a is b:
+        return a
 
     r = None
 
@@ -158,6 +170,10 @@ def euclid_modified_gcd(a, b):
     # returns 0 or 1 if either of those numbers are detected in inputs
     if f is 0 or f is 1:
         return f
+
+    # if the numbers a and b are the same, returns a as gcd
+    if a is b:
+        return a
 
     # swaps a and b to ensure that a > b
     if b > a:
@@ -191,4 +207,4 @@ def euclid_modified_gcd(a, b):
 
 
 if __name__ == '__main__':
-    print(bf_gcd_down(20, 15))
+    pass
