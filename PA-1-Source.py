@@ -38,13 +38,13 @@ def bf_gcd_down(a, b):
     # f is a flag that returns 0 if a or b is 0, and returns 1 if a or b is 1
     a, b, f = preprocess(a, b)
 
-    # lists to track all of big_num's factors and for all of small_num's factors
-    big_list = []
-    small_list = []
-
     # returns 0 or 1 if 0 or 1 are detected in inputs
     if f is 0 or f is 1:
         return f
+
+    # lists to track all of big_num's factors and for all of small_num's factors
+    big_list = []
+    small_list = []
 
     # assigns the larger value to big_num and the smaller to small_num
     if a > b:
@@ -54,21 +54,21 @@ def bf_gcd_down(a, b):
         big_num = b
         small_num = a
 
-    length = (small_num - 1)
+    length = small_num
 
-    # iterates all numbers from small_num through 1.
+    # decrements all numbers from small_num down to 1.
     for i in range(length):
 
         # if big_num / current iteration is evenly divisible
-        if (big_num % length) is 0:
+        if (big_num % small_num) is 0:
 
             # adds to the list of big_num's factors
-            big_list.append(int((big_num / length)))
+            big_list.append(int((big_num / small_num)))
 
         # decrements count
-        length -= 1
+        small_num -= 1
 
-    length = (small_num - 1)
+    small_num = length
 
     # iterates all numbers from small_num through 1. adds factors to small_num's list
     for i in range(length):
@@ -80,12 +80,17 @@ def bf_gcd_down(a, b):
             small_list.append(int((small_num / length)))
         length -= 1
 
+    gcd = None
+
     # checks every item in the list of big_num's factors. This is in sequential order
     for item in big_list:
 
         # if that number is found in the list of small_num's factors, updates gcd with new value
         if item in small_list:
             gcd = item
+
+    if gcd is None:
+        gcd = 1
 
     return gcd
 
@@ -186,4 +191,4 @@ def euclid_modified_gcd(a, b):
 
 
 if __name__ == '__main__':
-    print(euclid_modified_gcd(12, 18))
+    print(bf_gcd_down(20, 15))
