@@ -267,6 +267,7 @@ def run_algorithms(num_dict):
 
 # runs the dictionary of numbers through brute force algorithm 1
 def run_bf_v1(num_dict):
+    print('Brute Force Algorithm 1. Values are A, B, GCD, Time (Nanoseconds)')
     for item in num_dict:
         gcd, run_time = bf_v1(item, num_dict[item])
         print(item, num_dict[item])
@@ -275,6 +276,7 @@ def run_bf_v1(num_dict):
 
 # runs the dictionary of numbers through brute force algorithm 2
 def run_bf_v2(num_dict):
+    print('Brute Force Algorithm 2. Values are A, B, GCD, Time (Nanoseconds)')
     for item in num_dict:
         gcd, run_time = bf_v2(item, num_dict[item])
         print(item, num_dict[item])
@@ -283,6 +285,7 @@ def run_bf_v2(num_dict):
 
 # runs the dictionary of numbers through original euclidean algorithm
 def run_euclid_gcd(num_dict):
+    print('Euclids Algorithm Original. Values are A, B, GCD, Time (Nanoseconds)')
     for item in num_dict:
         gcd, run_time = euclid_gcd(item, num_dict[item])
         print(item, num_dict[item])
@@ -291,6 +294,7 @@ def run_euclid_gcd(num_dict):
 
 # runs the dictionary of numbers through modified euclidean algorithm
 def run_euclid_modified(num_dict):
+    print('Euclids Algorithm Modified. Values are A, B, GCD, Time (Nanoseconds)')
     for item in num_dict:
         gcd, run_time = euclid_modified_gcd(item, num_dict[item])
         print(item, num_dict[item])
