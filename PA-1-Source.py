@@ -18,15 +18,19 @@ import random
 def generate_nums():
     num_dict = {}
 
+    # range is the number of trials being conducted
     for i in range(10):
+        # generates random numbers between randint(min_num, max_num)
         a = random.randint(1, 1000)
         b = random.randint(1, 1000)
+
+        # adds the randomly generated numbers to the dictionary
         num_dict.update({a: b})
 
     return num_dict
 
 
-# ensures a and b are positive and handles for the case where a or b == 0 or 1
+# preprocessing to ensure a and b are positive and handles for the case where a or b == 0 or 1
 def preprocess(a, b):
     a = abs(a)
     b = abs(b)
@@ -46,7 +50,43 @@ def preprocess(a, b):
     return a, b, flag
 
 
-def bf_gcd_down(a, b):
+# brute force algorithm beginning from 1 and incrementing upward
+def bf_v1(a, b):
+    # pre-processing to ensure numbers are positive.
+    # f is a flag that returns 0 if a or b is 0, and returns 1 if a or b is 1
+    a, b, f = preprocess(a, b)
+
+    # returns 0 or 1 if either of those numbers are detected in inputs
+    if f is 0 or f is 1:
+        return f
+
+    # if the numbers a and b are the same, returns a as gcd
+    if a is b:
+        return a
+
+    # detects which number is larger/smaller
+    if a > b:
+        big_num = a
+        small_num = b
+    else:
+        big_num = b
+        small_num = a
+
+    # loop: when it finds a factor for big_num, it checks to see if it's also a factor for small_num
+    for i in range(small_num):
+
+        # if (i+1) is a factor for big_num
+        if big_num % (i+1) is 0:
+
+            # if (i+1) is a factor for small_num
+            if small_num % (i+1) is 0:
+                gcd = (i + 1)
+
+    return gcd
+
+
+# brute force algorithm beginning from the smaller input and decrementing downward
+def bf_v2(a, b):
     # pre-processing to ensure numbers are positive.
     # f is a flag that returns 0 if a or b is 0, and returns 1 if a or b is 1
     a, b, f = preprocess(a, b)
@@ -105,40 +145,6 @@ def bf_gcd_down(a, b):
 
     if gcd is None:
         gcd = 1
-
-    return gcd
-
-
-def bf_gcd_up(a, b):
-    # pre-processing to ensure numbers are positive.
-    # f is a flag that returns 0 if a or b is 0, and returns 1 if a or b is 1
-    a, b, f = preprocess(a, b)
-
-    # returns 0 or 1 if either of those numbers are detected in inputs
-    if f is 0 or f is 1:
-        return f
-
-    # if the numbers a and b are the same, returns a as gcd
-    if a is b:
-        return a
-
-    # detects which number is larger/smaller
-    if a > b:
-        big_num = a
-        small_num = b
-    else:
-        big_num = b
-        small_num = a
-
-    # loop: when it finds a factor for big_num, it checks to see if it's also a factor for small_num
-    for i in range(small_num):
-
-        # if (i+1) is a factor for big_num
-        if big_num % (i+1) is 0:
-
-            # if (i+1) is a factor for small_num
-            if small_num % (i+1) is 0:
-                gcd = (i + 1)
 
     return gcd
 
@@ -231,10 +237,16 @@ def run_algorithms(num_dict):
         b = num_dict[item]
 
         # calls the 4 different euclidean algorithms using a and b as arguments
-        result_1 = bf_gcd_down(a, b)
-        result_2 = bf_gcd_up(a, b)
+        result_1 = bf_v1(a, b)
+        result_2 = bf_v2(a, b)
         result_3 = euclid_gcd(a, b)
         result_4 = euclid_modified_gcd(a, b)
+
+        if result_1 == result_2 and result_1 == result_3 and result_1 == result_4:
+            pass
+        else:
+            print('error')
+
 
 if __name__ == '__main__':
     num_dict = generate_nums()

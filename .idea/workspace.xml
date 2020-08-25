@@ -10,6 +10,20 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -82,6 +96,7 @@
       <workItem from="1598379531017" duration="1141000" />
       <workItem from="1598380798790" duration="1740000" />
       <workItem from="1598382590307" duration="884000" />
+      <workItem from="1598383975974" duration="608000" />
     </task>
     <servers />
   </component>
@@ -89,22 +104,22 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1237" height="110" key="GridCell.Tab.0.bottom" timestamp="1598383474309">
+    <state width="1237" height="110" key="GridCell.Tab.0.bottom" timestamp="1598384586965">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="110" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1598383474309" />
-    <state width="1237" height="110" key="GridCell.Tab.0.center" timestamp="1598383474309">
+    <state width="1237" height="110" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1598384586965" />
+    <state width="1237" height="110" key="GridCell.Tab.0.center" timestamp="1598384586965">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="110" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1598383474309" />
-    <state width="1237" height="110" key="GridCell.Tab.0.left" timestamp="1598383474309">
+    <state width="1237" height="110" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1598384586965" />
+    <state width="1237" height="110" key="GridCell.Tab.0.left" timestamp="1598384586965">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="110" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1598383474309" />
-    <state width="1237" height="110" key="GridCell.Tab.0.right" timestamp="1598383474309">
+    <state width="1237" height="110" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1598384586965" />
+    <state width="1237" height="110" key="GridCell.Tab.0.right" timestamp="1598384586965">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="110" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1598383474309" />
+    <state width="1237" height="110" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1598384586965" />
     <state width="1237" height="204" key="GridCell.Tab.1.bottom" timestamp="1598382540803">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -131,6 +146,6 @@
     <state x="303" y="1" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1598364666688" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/PA_1$PA_1_Source.coverage" NAME="PA-1-Source Coverage Results" MODIFIED="1598383347446" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PA_1$PA_1_Source.coverage" NAME="PA-1-Source Coverage Results" MODIFIED="1598384399780" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
