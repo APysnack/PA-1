@@ -12,6 +12,7 @@ Pysnack, Alan
 '''
 import math
 import random
+import time
 
 
 # generates random numbers and stores them in a dictionary
@@ -19,10 +20,10 @@ def generate_nums():
     num_dict = {}
 
     # range is the number of trials being conducted
-    for i in range(10):
+    for i in range(1):
         # generates random numbers between randint(min_num, max_num)
-        a = random.randint(1, 1000)
-        b = random.randint(1, 1000)
+        a = random.randint(1, 999999)
+        b = random.randint(1, 999999)
 
         # adds the randomly generated numbers to the dictionary
         num_dict.update({a: b})
@@ -52,17 +53,22 @@ def preprocess(a, b):
 
 # brute force algorithm beginning from 1 and incrementing upward
 def bf_v1(a, b):
+    start_time = time.perf_counter_ns()
     # pre-processing to ensure numbers are positive.
     # f is a flag that returns 0 if a or b is 0, and returns 1 if a or b is 1
     a, b, f = preprocess(a, b)
 
     # returns 0 or 1 if either of those numbers are detected in inputs
     if f is 0 or f is 1:
-        return f
+        stop_time = time.perf_counter_ns()
+        end_time = (stop_time - start_time)
+        return f, end_time
 
     # if the numbers a and b are the same, returns a as gcd
     if a is b:
-        return a
+        stop_time = time.perf_counter_ns()
+        end_time = (stop_time - start_time)
+        return a, end_time
 
     # detects which number is larger/smaller
     if a > b:
@@ -82,18 +88,24 @@ def bf_v1(a, b):
             if small_num % (i+1) is 0:
                 gcd = (i + 1)
 
-    return gcd
+    stop_time = time.perf_counter_ns()
+    end_time = (stop_time - start_time)
+    return gcd, end_time
 
 
 # brute force algorithm beginning from the smaller input and decrementing downward
 def bf_v2(a, b):
+    start_time = time.perf_counter_ns()
+
     # pre-processing to ensure numbers are positive.
     # f is a flag that returns 0 if a or b is 0, and returns 1 if a or b is 1
     a, b, f = preprocess(a, b)
 
     # returns 0 or 1 if 0 or 1 are detected in inputs
     if f is 0 or f is 1:
-        return f
+        stop_time = time.perf_counter_ns()
+        end_time = (stop_time - start_time)
+        return f, end_time
 
     # lists to track all of big_num's factors and for all of small_num's factors
     big_list = []
@@ -141,27 +153,36 @@ def bf_v2(a, b):
         # if that number is found in the list of small_num's factors, updates gcd with new value
         if item in small_list:
             gcd = item
-            return gcd
+            stop_time = time.perf_counter_ns()
+            end_time = (stop_time - start_time)
+            return gcd, end_time
 
     if gcd is None:
         gcd = 1
 
-    return gcd
+    stop_time = time.perf_counter_ns()
+    end_time = (stop_time - start_time)
+    return gcd, end_time
 
 
 # the original version of euclid's algorithm using division
 def euclid_gcd(a, b):
+    start_time = time.perf_counter_ns()
     # pre-processing to ensure numbers are positive.
     # f is a flag that returns 0 if a or b is 0, and returns 1 if a or b is 1
     a, b, f = preprocess(a, b)
 
     # returns 0 or 1 if either of those numbers are detected in inputs
     if f is 0 or f is 1:
-        return f
+        stop_time = time.perf_counter_ns()
+        end_time = (stop_time - start_time)
+        return f, end_time
 
     # if the numbers a and b are the same, returns a as gcd
     if a is b:
-        return a
+        stop_time = time.perf_counter_ns()
+        end_time = (stop_time - start_time)
+        return a, end_time
 
     r = None
 
@@ -176,12 +197,15 @@ def euclid_gcd(a, b):
         a = b
         b = r
 
+    stop_time = time.perf_counter_ns()
+    end_time = (stop_time - start_time)
     # when r = 0, a is gcd
-    return a
+    return a, end_time
 
 
 # the modified version of euclid's algorithm using subtraction
 def euclid_modified_gcd(a, b):
+    start_time = time.perf_counter_ns()
 
     # pre-processing to ensure numbers are positive.
     # f is a flag that returns 0 if a or b is 0, and returns 1 if a or b is 1
@@ -189,11 +213,15 @@ def euclid_modified_gcd(a, b):
 
     # returns 0 or 1 if either of those numbers are detected in inputs
     if f is 0 or f is 1:
-        return f
+        stop_time = time.perf_counter_ns()
+        end_time = (stop_time - start_time)
+        return f, end_time
 
     # if the numbers a and b are the same, returns a as gcd
     if a is b:
-        return a
+        stop_time = time.perf_counter_ns()
+        end_time = (stop_time - start_time)
+        return a, end_time
 
     # swaps a and b to ensure that a > b
     if b > a:
@@ -223,7 +251,9 @@ def euclid_modified_gcd(a, b):
         b = r
 
     # when r = 0, a is gcd
-    return a
+    stop_time = time.perf_counter_ns()
+    end_time = (stop_time - start_time)
+    return a, end_time
 
 
 def run_algorithms(num_dict):
@@ -237,19 +267,19 @@ def run_algorithms(num_dict):
         b = num_dict[item]
 
         # calls the 4 different euclidean algorithms using a and b as arguments
-        result_1 = bf_v1(a, b)
-        result_2 = bf_v2(a, b)
-        result_3 = euclid_gcd(a, b)
-        result_4 = euclid_modified_gcd(a, b)
-
-        if result_1 == result_2 and result_1 == result_3 and result_1 == result_4:
-            pass
-        else:
-            print('error')
+        gcd_1, time_1 = bf_v1(a, b)
+        gcd_2, time_2 = bf_v2(a, b)
+        gcd_3, time_3 = euclid_gcd(a, b)
+        gcd_4, time_4 = euclid_modified_gcd(a, b)
+        print(gcd_1, time_1)
+        print(gcd_2, time_2)
+        print(gcd_3, time_3)
+        print(gcd_4, time_4)
 
 
 if __name__ == '__main__':
     num_dict = generate_nums()
     run_algorithms(num_dict)
+
 
 
