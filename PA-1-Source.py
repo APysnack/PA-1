@@ -20,7 +20,7 @@ import csv
 # generates random numbers and stores them in a dictionary
 def generate_nums():
     list_range = 100
-    list_elements = 10
+    list_elements = 13
 
     a_list = random.sample(range(list_range), list_elements)
     b_list = random.sample(range(list_range), list_elements)
@@ -275,6 +275,7 @@ def write_stats(min, max, avg, median, fname):
 
 # runs the dictionary of numbers through brute force algorithm 1 and writes to csv files
 def run_bf_v1(a_list, b_list, count):
+    time_list = []
     file_name = 'BF_v1_Results.csv'
     stat_file_name = 'BF_v1_Statistics.csv'
     max_time, total_time = 0, 0
@@ -299,12 +300,18 @@ def run_bf_v1(a_list, b_list, count):
 
             total_time += run_time
 
-            if not occurrence_dict.get(run_time):
-                occurrence_dict.update({run_time: 0})
+            time_list.append(run_time)
 
-            occurrence_dict[run_time] += 1
+    time_list.sort()
 
-    median = max(occurrence_dict, key=occurrence_dict.get)
+    if (count % 2) == 0:
+        middle_1 = math.floor(count/2)
+        middle_2 = (math.floor(count/2) + 1)
+        median = (middle_1 / middle_2)
+    else:
+        middle = math.floor(count/2)
+        median = time_list[middle]
+
     avg_time = (total_time / count)
     write_stats(min_time, max_time, avg_time, median, stat_file_name)
 
@@ -314,7 +321,7 @@ def run_bf_v2(a_list, b_list, count):
     file_name = 'BF_v2_Results.csv'
     stat_file_name = 'BF_v2_Statistics.csv'
     max_time, total_time = 0, 0
-    occurrence_dict = {}
+    time_list = []
 
     # an upper bound of min_time
     min_time = 300000
@@ -335,12 +342,18 @@ def run_bf_v2(a_list, b_list, count):
 
             total_time += run_time
 
-            if not occurrence_dict.get(run_time):
-                occurrence_dict.update({run_time: 0})
+            time_list.append(run_time)
 
-            occurrence_dict[run_time] += 1
+    time_list.sort()
 
-    median = max(occurrence_dict, key=occurrence_dict.get)
+    if (count % 2) == 0:
+        middle_1 = math.floor(count / 2)
+        middle_2 = (math.floor(count / 2) + 1)
+        median = (middle_1 / middle_2)
+    else:
+        middle = math.floor(count / 2)
+        median = time_list[middle]
+
     avg_time = (total_time / count)
     write_stats(min_time, max_time, avg_time, median, stat_file_name)
 
@@ -351,7 +364,7 @@ def run_euclid_gcd(a_list, b_list, count):
     stat_file_name = 'OE_Statistics.csv'
 
     max_time, total_time = 0, 0
-    occurrence_dict = {}
+    time_list = []
 
     # an upper bound of min_time
     min_time = 300000
@@ -372,12 +385,18 @@ def run_euclid_gcd(a_list, b_list, count):
 
             total_time += run_time
 
-            if not occurrence_dict.get(run_time):
-                occurrence_dict.update({run_time: 0})
+            time_list.append(run_time)
 
-            occurrence_dict[run_time] += 1
+    time_list.sort()
 
-    median = max(occurrence_dict, key=occurrence_dict.get)
+    if (count % 2) == 0:
+        middle_1 = math.floor(count / 2)
+        middle_2 = (math.floor(count / 2) + 1)
+        median = (middle_1 / middle_2)
+    else:
+        middle = math.floor(count / 2)
+        median = time_list[middle]
+
     avg_time = (total_time / count)
 
     write_stats(min_time, max_time, avg_time, median, stat_file_name)
@@ -388,7 +407,7 @@ def run_euclid_modified(a_list, b_list, count):
     file_name = 'SE_Results.csv'
     stat_file_name = 'SE_Statistics.csv'
     max_time, total_time = 0, 0
-    occurrence_dict = {}
+    time_list = []
 
     # an upper bound of min_time
     min_time = 300000
@@ -409,12 +428,18 @@ def run_euclid_modified(a_list, b_list, count):
 
             total_time += run_time
 
-            if not occurrence_dict.get(run_time):
-                occurrence_dict.update({run_time: 0})
+            time_list.append(run_time)
 
-            occurrence_dict[run_time] += 1
+    time_list.sort()
 
-    median = max(occurrence_dict, key=occurrence_dict.get)
+    if (count % 2) == 0:
+        middle_1 = math.floor(count / 2)
+        middle_2 = (math.floor(count / 2) + 1)
+        median = (middle_1 / middle_2)
+    else:
+        middle = math.floor(count / 2)
+        median = time_list[middle]
+
     avg_time = (total_time / count)
     write_stats(min_time, max_time, avg_time, median, stat_file_name)
 
