@@ -314,7 +314,7 @@ def run_bf_v1(a_list, b_list, count):
     if (count % 2) == 0:
         middle_1 = math.floor(count/2)
         middle_2 = (math.floor(count/2) + 1)
-        median = (middle_1 / middle_2)
+        median = ((middle_1 + middle_2) / 2)
 
     # if number of elements is odd, uses n/2 to find median
     else:
@@ -368,7 +368,7 @@ def run_bf_v2(a_list, b_list, count):
     if (count % 2) == 0:
         middle_1 = math.floor(count / 2)
         middle_2 = (math.floor(count / 2) + 1)
-        median = (middle_1 / middle_2)
+        median = ((middle_1 + middle_2) / 2)
 
     # for odd number of elements, uses n/2 as median
     else:
@@ -421,7 +421,7 @@ def run_euclid_gcd(a_list, b_list, count):
     if (count % 2) == 0:
         middle_1 = math.floor(count / 2)
         middle_2 = (math.floor(count / 2) + 1)
-        median = (middle_1 / middle_2)
+        median = ((middle_1 + middle_2) / 2)
 
     # for odd number of elements, uses floor of n/2 as median
     else:
@@ -471,7 +471,7 @@ def run_euclid_modified(a_list, b_list, count):
     if (count % 2) == 0:
         middle_1 = math.floor(count / 2)
         middle_2 = (math.floor(count / 2) + 1)
-        median = (middle_1 / middle_2)
+        median = ((middle_1 + middle_2) / 2)
 
     # if odd number of elements, uses floor of n/2 as median
     else:
