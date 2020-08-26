@@ -444,8 +444,47 @@ def run_euclid_modified(a_list, b_list, count):
     write_stats(min_time, max_time, avg_time, median, stat_file_name)
 
 
+def calculate_totals():
+    bfv1 = 'BF_v1_Results.csv'
+    bfv2 = 'BF_v2_Results.csv'
+    oe = 'OE_Results.csv'
+    se = 'SE_Results.csv'
+
+    compare_files(bfv1, bfv2)
+
+
+def compare_files(csvf1, csvf2):
+    count_1, count_2 = 0, 0
+    time_list_1 = []
+    time_list_2 = []
+
+    with open(csvf1, 'r') as file_1:
+        reader_1 = csv.reader(file_1)
+        next(reader_1)
+        for line in reader_1:
+            time_list_1.append(int(line[3]))
+
+    with open(csvf2, 'r') as file_2:
+        reader_2 = csv.reader(file_2)
+        next(reader_2)
+        for line in reader_2:
+            time_list_2.append(int(line[3]))
+
+    for i, time_1 in enumerate(time_list_1):
+        if time_1 > time_list_2[i]:
+            count_1 += 1
+        elif time_1 == time_list_2[i]:
+            pass
+        else:
+            count_2 += 1
+
+    print(f'Algorithm {csvf1} outperformed {count_1} times.')
+    print(f'Algorithm {csvf2} outperformed {count_2} times.')
+
+
 # main function
 if __name__ == '__main__':
     a_list, b_list, count = generate_nums()
     run_algorithms(a_list, b_list, count)
+    calculate_totals()
 
