@@ -7,8 +7,10 @@
       <change beforePath="$PROJECT_DIR$/BF_v1_Statistics.csv" beforeDir="false" afterPath="$PROJECT_DIR$/BF_v1_Statistics.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BF_v2_Results.csv" beforeDir="false" afterPath="$PROJECT_DIR$/BF_v2_Results.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BF_v2_Statistics.csv" beforeDir="false" afterPath="$PROJECT_DIR$/BF_v2_Statistics.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Conclusions.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Conclusions.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OE_Results.csv" beforeDir="false" afterPath="$PROJECT_DIR$/OE_Results.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OE_Statistics.csv" beforeDir="false" afterPath="$PROJECT_DIR$/OE_Statistics.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PA-1-Executable.exe" beforeDir="false" afterPath="$PROJECT_DIR$/PA-1-Executable.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PA-1-Source.py" beforeDir="false" afterPath="$PROJECT_DIR$/PA-1-Source.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SE_Results.csv" beforeDir="false" afterPath="$PROJECT_DIR$/SE_Results.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SE_Statistics.csv" beforeDir="false" afterPath="$PROJECT_DIR$/SE_Statistics.csv" afterDir="false" />
@@ -116,7 +118,7 @@
       <workItem from="1598410869889" duration="1167000" />
       <workItem from="1598460970295" duration="2208000" />
       <workItem from="1598464135169" duration="2290000" />
-      <workItem from="1598470154537" duration="3860000" />
+      <workItem from="1598470154537" duration="6482000" />
     </task>
     <servers />
   </component>
@@ -124,22 +126,22 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1237" height="110" key="GridCell.Tab.0.bottom" timestamp="1598474034814">
+    <state width="1237" height="110" key="GridCell.Tab.0.bottom" timestamp="1598476674051">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="110" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1598474034814" />
-    <state width="1237" height="110" key="GridCell.Tab.0.center" timestamp="1598474034814">
+    <state width="1237" height="110" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1598476674051" />
+    <state width="1237" height="110" key="GridCell.Tab.0.center" timestamp="1598476674051">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="110" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1598474034814" />
-    <state width="1237" height="110" key="GridCell.Tab.0.left" timestamp="1598474034814">
+    <state width="1237" height="110" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1598476674051" />
+    <state width="1237" height="110" key="GridCell.Tab.0.left" timestamp="1598476674051">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="110" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1598474034814" />
-    <state width="1237" height="110" key="GridCell.Tab.0.right" timestamp="1598474034814">
+    <state width="1237" height="110" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1598476674051" />
+    <state width="1237" height="110" key="GridCell.Tab.0.right" timestamp="1598476674051">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="110" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1598474034814" />
+    <state width="1237" height="110" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1598476674051" />
     <state width="1237" height="204" key="GridCell.Tab.1.bottom" timestamp="1598382540803">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -165,7 +167,18 @@
     </state>
     <state x="303" y="1" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1598364666688" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/PA-1-Source.py</url>
+          <line>277</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/PA_1$PA_1_Source.coverage" NAME="PA-1-Source Coverage Results" MODIFIED="1598474034814" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PA_1$PA_1_Source.coverage" NAME="PA-1-Source Coverage Results" MODIFIED="1598474684099" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
