@@ -444,17 +444,27 @@ def run_euclid_modified(a_list, b_list, count):
     write_stats(min_time, max_time, avg_time, median, stat_file_name)
 
 
-def calculate_totals():
+def compare_algorithms():
     bfv1 = 'BF_v1_Results.csv'
     bfv2 = 'BF_v2_Results.csv'
     oe = 'OE_Results.csv'
     se = 'SE_Results.csv'
 
-    compare_files(bfv1, bfv2)
+    v1txt = 'brute-force (v1)'
+    v2txt = 'brute-force (v2)'
+    oetxt = 'the original version of Euclid'
+    setxt = 'the second version of Euclid'
+
+    compare_files(bfv1, bfv2, v1txt, v2txt)
+    compare_files(oe, bfv1, oetxt, v1txt)
+    compare_files(oe, bfv2, oetxt, v2txt)
+    compare_files(se, oe, setxt, oetxt)
+    compare_files(se, bfv1, setxt, v1txt)
+    compare_files(se, bfv2, setxt, v2txt)
 
 
-def compare_files(csvf1, csvf2):
-    count_1, count_2 = 0, 0
+def compare_files(csvf1, csvf2, f_name_1, f_name_2):
+    count_1, count_2, tot_tsaved_1, tot_tsaved_2, = 0, 0, 0, 0
     time_list_1 = []
     time_list_2 = []
 
@@ -471,20 +481,54 @@ def compare_files(csvf1, csvf2):
             time_list_2.append(int(line[3]))
 
     for i, time_1 in enumerate(time_list_1):
-        if time_1 > time_list_2[i]:
+        if time_1 < time_list_2[i]:
+            # count of times algorithm 1 outperformed + 1
             count_1 += 1
+            t_saved_1 = (time_list_2[i] - time_1)
+            tot_tsaved_1 += t_saved_1
         elif time_1 == time_list_2[i]:
             pass
         else:
+            # count of times algorithm 2 outperformed + 1
             count_2 += 1
+            t_saved_2 = (time_1 - time_list_2[i])
+            tot_tsaved_2 += t_saved_2
 
-    print(f'Algorithm {csvf1} outperformed {count_1} times.')
-    print(f'Algorithm {csvf2} outperformed {count_2} times.')
+    if count_1 > count_2:
+        if count_1 == 0:
+            print('db0 error')
+            return
 
+        str_1 = 'Out of 1,000 pairs of integers, ' + f_name_1 + ' outperformed '
+        str_2 = f_name_2 + ' in ' + str(count_1) + ' pairs; and the average time '
+        str_3 = 'saved for these ' + str(count_1) + ' pairs of integers was '
+        str_4 = str(round(tot_tsaved_1 / count_1)) + ' nanoseconds'
+        str_to_print = str_1 + str_2 + str_3 + str_4
+
+    else:
+        if count_2 == 0:
+            print('db0 error')
+            return
+
+        str_1 = 'Out of 1,000 pairs of integers, ' + f_name_2 + ' outperformed '
+        str_2 = f_name_1 + ' in ' + str(count_2) + ' pairs; and the average time '
+        str_3 = 'saved for these ' + str(count_2) + ' pairs of integers was '
+        str_4 = str(round(tot_tsaved_2 / count_2)) + ' nanoseconds'
+        str_to_print = str_1 + str_2 + str_3 + str_4
+
+    append_file(str_to_print)
+
+
+def append_file(str):
+    fname = 'Conclusions.txt'
+
+    with open(fname, 'a') as f:
+        f.write(str)
+        f.write('\n')
 
 # main function
 if __name__ == '__main__':
     a_list, b_list, count = generate_nums()
     run_algorithms(a_list, b_list, count)
-    calculate_totals()
+    compare_algorithms()
 
