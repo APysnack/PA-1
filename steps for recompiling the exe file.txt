@@ -1,0 +1,5 @@
+1. open command line in the same folder as project (type "cmd")
+2. pip must be installed (look online for instructions if needed)
+3. type: pip install pyinstaller
+4. type: pyinstaller --onefile -w PA-1-Source.py
+5. Move the exe file in the "dist" folder to "PA-1" folder
