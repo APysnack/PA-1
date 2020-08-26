@@ -263,8 +263,14 @@ def run_algorithms(a_list, b_list, count):
 
 
 def write_stats(min, max, avg, median, fname):
-    print('Write these to ' + fname + ':')
-    print(min, max, avg, median)
+
+    with open(fname, 'w', newline='') as f:
+        writer = csv.writer(f)
+        writer.writerow(['Statistics', 'Nanoseconds'])
+        writer.writerow(['Maximum Time', max])
+        writer.writerow(['Minimum Time', min])
+        writer.writerow(['Average Time', avg])
+        writer.writerow(['Median Time', median])
 
 
 # runs the dictionary of numbers through brute force algorithm 1 and writes to csv files
