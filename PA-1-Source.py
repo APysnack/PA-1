@@ -36,11 +36,11 @@ def preprocess(a, b):
     b = abs(b)
 
     # flag returns 1 if 1 is detected in a or b
-    if a is 1 or b is 1:
+    if a == 1 or b == 1:
         flag = 1
 
     # flag returns 0 if 0 is detected in a or b, overwrites with 0 if 1 was already found
-    if a is 0 or b is 0:
+    if a == 0 or b == 0:
         flag = 0
 
     # else, the value of flag doesn't matter. 2 is an arbitrary return value
@@ -58,13 +58,13 @@ def bf_v1(a, b):
     a, b, f = preprocess(a, b)
 
     # returns 0 or 1 if either of those numbers are detected in inputs
-    if f is 0 or f is 1:
+    if f == 0 or f == 1:
         stop_time = time.perf_counter_ns()
         end_time = (stop_time - start_time)
         return f, end_time
 
     # if the numbers a and b are the same, returns a as gcd
-    if a is b:
+    if a == b:
         stop_time = time.perf_counter_ns()
         end_time = (stop_time - start_time)
         return a, end_time
@@ -101,7 +101,7 @@ def bf_v2(a, b):
     a, b, f = preprocess(a, b)
 
     # returns 0 or 1 if 0 or 1 are detected in inputs
-    if f is 0 or f is 1:
+    if f == 0 or f == 1:
         stop_time = time.perf_counter_ns()
         end_time = (stop_time - start_time)
         return f, end_time
@@ -124,7 +124,7 @@ def bf_v2(a, b):
     for i in range(length):
 
         # if big_num / current iteration is evenly divisible
-        if (big_num % small_num) is 0:
+        if (big_num % small_num) == 0:
 
             # adds to the list of big_num's factors
             big_list.append(int(small_num))
@@ -138,7 +138,7 @@ def bf_v2(a, b):
     for i in range(length):
 
         # if small num / current iteration is evenly divisible
-        if (small_num % length) is 0:
+        if (small_num % length) == 0:
 
             # adds to the list of small_num's factors
             small_list.append(int(length))
@@ -172,13 +172,13 @@ def euclid_gcd(a, b):
     a, b, f = preprocess(a, b)
 
     # returns 0 or 1 if either of those numbers are detected in inputs
-    if f is 0 or f is 1:
+    if f == 0 or f == 1:
         stop_time = time.perf_counter_ns()
         end_time = (stop_time - start_time)
         return f, end_time
 
     # if the numbers a and b are the same, returns a as gcd
-    if a is b:
+    if a == b:
         stop_time = time.perf_counter_ns()
         end_time = (stop_time - start_time)
         return a, end_time
@@ -211,13 +211,13 @@ def euclid_modified_gcd(a, b):
     a, b, f = preprocess(a, b)
 
     # returns 0 or 1 if either of those numbers are detected in inputs
-    if f is 0 or f is 1:
+    if f == 0 or f == 1:
         stop_time = time.perf_counter_ns()
         end_time = (stop_time - start_time)
         return f, end_time
 
     # if the numbers a and b are the same, returns a as gcd
-    if a is b:
+    if a == b:
         stop_time = time.perf_counter_ns()
         end_time = (stop_time - start_time)
         return a, end_time
